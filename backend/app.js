@@ -7,8 +7,8 @@ const userRouter = require('./routes/user-routes');
 dotenv.config();
 
 //middleware
-app.use("/user", userRouter)
-
+app.use(express.json());
+app.use("/user", userRouter);
 
 moongoose.connect("mongodb+srv://Anshika66-Gupta:6MSWTVddULDUEy05@movie-system.87yhtky.mongodb.net/Movies?retryWrites=true&w=majority")
 
