@@ -35,7 +35,7 @@ const signup = async (req, next, res) => {
     let users;
     try {
         users = new user({ name, email, password: hashedPassword });
-        users = await users.save();
+        await users.save();
 
     } catch (err) {
         return console.log(err);
@@ -45,7 +45,7 @@ const signup = async (req, next, res) => {
         return res.status(500).json({ message: "Unexpected Error Occurred" })
     }
 
-    return res.status(201).json({ users });
+    return res.status(201).json({id: users._id });
 }
 
 

@@ -21,7 +21,7 @@ app.use('/booking', bookingRouter);
 
 moongoose.connect("mongodb+srv://Anshika66-Gupta:6MSWTVddULDUEy05@movie-system.87yhtky.mongodb.net/Movies?retryWrites=true&w=majority")
 
-app.listen(3500, () => {
+app.listen(4000, () => {
     
-    console.log(`Connected to localhost port ${3500}`);
+    console.log(`Connected to localhost port ${4000}`);
 })
