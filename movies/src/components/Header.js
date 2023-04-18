@@ -12,20 +12,19 @@ import {
 } from '@mui/material'
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import { getAllMovie } from '../Api-helpers/api-helpers';
-
-
-const dummyArray = ["pathan", "slefiee", "Brahmastra", "chal jindiye"]
+import { Link } from 'react-router-dom';
 const Header = () => {
   const [value, setValue] = useState(0);
+  const [movies, setMovies] = useState([])
   useEffect(() => {
     getAllMovie()
-      .then((data) => console.log(data))
+      .then((data) => console.log(data.movies))
       .catch((err) => console.log(err));
    }, []);
   
 
   return (
-    <AppBar sx={{bgcolor: "#2b2d42"}}>
+    <AppBar position='sticky' sx={{bgcolor: "#2b2d42"}}>
       <Toolbar>
         <Box width={'20%'}>
           < TheaterComedyIcon />
@@ -33,7 +32,7 @@ const Header = () => {
         <Box width={'30%'} margin={"auto"}>
           <Autocomplete
             freeSolo
-            options={dummyArray.map((option) => option)}
+            options={movies && movies.map((option) => option.title)}
             renderInput={(params) => (
               <TextField
             sx={{input:  {color: "white"}}}
@@ -44,11 +43,10 @@ const Header = () => {
         <Box display={'flex'}>
           <Tabs textColor='white' indicatorColor='secondary' value={value}
           onChange={(e,val)=>setValue(val)}
-          
           >
-          <Tab label="Movies" />
-            <Tab label="Auth" />
-            <Tab label="Admin"/>
+          <Tab LinkComponent={Link} to="/movies" label="Movies" />
+            <Tab LinkComponent={Link} to="/auth" label="Auth" />
+            <Tab LinkComponent={Link} to="/admin"  label="Admin"/>
 
           </Tabs>
           
