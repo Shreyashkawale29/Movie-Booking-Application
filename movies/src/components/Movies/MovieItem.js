@@ -6,33 +6,27 @@ import {
     Typography
 } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const MovieItem = () => {
-    return (
-        <Card sx={{
-            margin: 1,
-            width: 250,
-            height: 420,
-            borderRadius: 5,
-            ":hover": {
-            boxShadow: "10px 10px 20px #ccc"
-        } }}>
-        <img height={'50%'} width="100%"  src=" " alt="" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent> 
-        <CardActions>
-          <Button sx={{margin:"auto"}} size="small">Book</Button>
-        </CardActions>
-      </Card>
-  
+const MovieItems = ({title,releaseDate,posterUrl,id}) => {
+  return (
+    <Card sx={{ width: 250,height:320,margin:2,borderRadius:5,":hover":{
+      boxShadow:"10px 10px 20px #ccc",
+    }, }}>
+     <img height={"50%"} width="100%" src={posterUrl} alt={title} />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {new Date(releaseDate).toDateString()}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button LinkComponent={Link} to={`/booking/${id}`} sx={{margin:'auto'}} size="small">BOOK</Button>
+      </CardActions>
+    </Card>
   )
 }
 
-export default MovieItem
+export default MovieItems
