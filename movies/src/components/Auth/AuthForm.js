@@ -3,7 +3,7 @@ import { Box, Button, Dialog, FormLabel, IconButton, TextField, Typography } fro
 import React, { useState } from 'react'
 const labelStyle = { mt: 1, mb: 2 };
 
-const AuthForm = ({onSubmit}) => {
+const AuthForm = ({ onSubmit, isAdmin }) => {
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
@@ -23,7 +23,7 @@ const AuthForm = ({onSubmit}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(inputs);
+        onSubmit({inputs,signup: isAdmin?false:isSignup});
     };
     return (
         <Dialog PaperProps={{style:{borderRadius:20}}} open={true
@@ -45,7 +45,7 @@ const AuthForm = ({onSubmit}) => {
                     margin="auto"
                     alignContent={'center'}
                 > 
-                    {isSignup && (
+                    {!isAdmin && isSignup && (
                         <>
                             {" "}
                             <FormLabel sx={labelStyle}>name</FormLabel>
@@ -89,11 +89,11 @@ const AuthForm = ({onSubmit}) => {
                         {isSignup ? "Signup" : "Login" }
                     </Button>
                     
-                    <Button onClick={()=>setIsSignup(!isSignup)}
+                   {!isAdmin && <Button onClick={()=>setIsSignup(!isSignup)}
                         sx={{ mt: 2, borderRadius: 10 }}
                         fullWidth>
                         Switch To   {isSignup?"Login": "Signup"}
-                    </Button>
+                    </Button>}
 
 
                 </Box>
