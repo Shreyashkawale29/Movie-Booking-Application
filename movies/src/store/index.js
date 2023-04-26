@@ -10,6 +10,7 @@ const userSlice = createSlice({
             
         },
         logout(state) {
+            localStorage.removeItem("userId");
             state.isLoggedIn = false;
         }  
     }
@@ -17,15 +18,18 @@ const userSlice = createSlice({
 const adminSlice = createSlice({
     name: "auth",
     initialState: {
-        isLogged:false
+        isLoggedIn:false
     },
     reducers: {
         login(state) {
-            state.isLogged = true;
+            state.isLoggedIn = true;
             
         },
         logout(state) {
-            state.isLogged = false;
+            localStorage.removeItem("adminId");
+            localStorage.removeItem("token");
+
+            state.isLoggedIn = false;
             
         }
     }

@@ -17,8 +17,9 @@ const Movies = () => {
     All Movies
   </Typography>
   <Box width={"100%"} margin={'auto'} marginTop='5' display={"flex"} justifyContent='flex-start' flexWrap={'wrap'}>
-    {Movies.slice().map((item,index)=>
-      <MovieItem id={item._id}
+    {Movies.map((item,index)=>
+      <MovieItem
+        id={item._id}
         title={item.title}
         posterUrl={item.posterUrl}
         releaseDate={item.releaseDate}
