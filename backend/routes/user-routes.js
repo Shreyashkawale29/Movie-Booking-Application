@@ -8,6 +8,7 @@ userRouter.post("/signup", signup);
 userRouter.put("/:id", updateUser);
 userRouter.delete("/:id", deleteUser);
 userRouter.post("/login", login);
+userRouter.get("/booking/:id", getBookingofUser);
 
 
 

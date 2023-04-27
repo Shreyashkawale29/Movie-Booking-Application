@@ -6,6 +6,7 @@ import Auth from "./components/Auth/Auth";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import Movies from "./components/Movies/Movies";
+import UserProfile from "./Profile/userProfile";
 import { adminActions, userActions } from "./store";
 
 function App() {
@@ -34,7 +35,11 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/movies" element={<Movies/>} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/auth" element={<Auth/>} />
+          <Route path="/auth" element={<Auth />} />
+          {/*<Route path="/booking/:id" element={<Booking /> } />*/}
+          <Route path="/user" element={<UserProfile />} />
+
+
 
 
 </Routes>

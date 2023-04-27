@@ -61,7 +61,7 @@ const Header = () => {
             )}
             {isUserLoggedIn && (
               <>
-            <Tab LinkComponent={Link} to="/profile" label="Profile" />
+            <Tab LinkComponent={Link} to="/user" label="Profile" />
             <Tab onClick={()=>logout(false)} LinkComponent={Link} to="/"  label="Logout"/>
               </>
             )}
